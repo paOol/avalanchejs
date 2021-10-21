@@ -11,7 +11,7 @@ import {
   IsBootstrappedParams,
   PeersParams,
   PeersResponse,
-  iGetTxFeeResponse
+  GetTxFee
 } from "./interfaces"
 
 /**
@@ -106,7 +106,7 @@ export class InfoAPI extends JRPCAPI {
    *
    * @returns Returns a Promise<object> of the transaction fee in nAVAX.
    */
-  getTxFee = async (): Promise<iGetTxFeeResponse> => {
+  getTxFee = async (): Promise<GetTxFee> => {
     // TODO - Add `GetTxFee` response interface
     const response: RequestResponseData = await this.callMethod("info.getTxFee")
     return {

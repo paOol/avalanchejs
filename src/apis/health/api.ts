@@ -16,6 +16,7 @@ import { HealthResponse } from "./interfaces"
  */
 export class HealthAPI extends JRPCAPI {
   /**
+   * Health returns a health check on the Avalanche node
    *
    * @returns Promise for a [[HealthResponse]]
    */

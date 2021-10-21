@@ -77,6 +77,18 @@ export class InfoAPI extends JRPCAPI {
   }
 
   /**
+   * Fetches the IP of the node.
+   *
+   * @returns Returns a Promise<string> of the IP address of the node.
+   */
+  getNodeIP = async (): Promise<string> => {
+    const response: RequestResponseData = await this.callMethod(
+      "info.getNodeIP"
+    )
+    return response.data.result.ip
+  }
+
+  /**
    * Fetches the version of Gecko this node is running
    *
    * @returns Returns a Promise<string> containing the version of Gecko.

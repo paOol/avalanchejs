@@ -27,7 +27,7 @@ import {
  */
 export class IndexAPI extends JRPCAPI {
   /**
-   * Get last accepted tx, vtx or block
+   * GetLastAccepted returns the last accepted container.
    *
    * @param encoding
    * @param baseURL
@@ -55,7 +55,9 @@ export class IndexAPI extends JRPCAPI {
   }
 
   /**
-   * Get container by index
+   * Returns the ID of the [index]th accepted container and the container itself.
+   * For example, if [index] == 0, returns the first accepted container.
+   * If [index] == 1, returns the second accepted container, etc.
    *
    * @param index
    * @param encoding
@@ -86,7 +88,7 @@ export class IndexAPI extends JRPCAPI {
   }
 
   /**
-   * Get contrainer by ID
+   * Get the accepted container by ID
    *
    * @param containerID
    * @param encoding
@@ -117,7 +119,10 @@ export class IndexAPI extends JRPCAPI {
   }
 
   /**
-   * Get container range
+   * GetContainerRange returns the IDs of containers at indices
+   * [startIndex], [startIndex+1], ..., [startIndex+numToFetch-1].
+   * [startIndex] should be <= i.lastAcceptedIndex().
+   * [numToFetch] should be in [0, MaxFetchedByRange]
    *
    * @param startIndex
    * @param numToFetch

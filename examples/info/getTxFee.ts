@@ -1,6 +1,6 @@
-import { Avalanche } from "../../dist"
-import { InfoAPI } from "../../dist/apis/info"
-import { iGetTxFeeResponse } from "../../dist/apis/info/interfaces"
+import { Avalanche } from "../../src"
+import { InfoAPI } from "../../src/apis/info"
+import { iGetTxFeeResponse } from "../../src/apis/info/interfaces"
 
 const ip: string = "localhost"
 const port: number = 9650
@@ -10,8 +10,8 @@ const avalanche: Avalanche = new Avalanche(ip, port, protocol, networkID)
 const info: InfoAPI = avalanche.Info()
 
 const main = async (): Promise<any> => {
-  const iGetTxFeeResponse: iGetTxFeeResponse = await info.getTxFee()
-  console.log(iGetTxFeeResponse)
+  const TxFeeResponse: iGetTxFeeResponse = await info.getTxFee()
+  console.log(TxFeeResponse)
 }
 
 main()

@@ -10,7 +10,8 @@ import {
   GetBlockchainIDParams,
   IsBootstrappedParams,
   PeersParams,
-  PeersResponse
+  PeersResponse,
+  iGetTxFeeResponse
 } from "./interfaces"
 
 /**
@@ -101,16 +102,22 @@ export class InfoAPI extends JRPCAPI {
   }
 
   /**
-   * Fetches the transaction fee from the node.
+   * Fetches the transaction fees from the node.
    *
    * @returns Returns a Promise<object> of the transaction fee in nAVAX.
    */
-  getTxFee = async (): Promise<{ txFee: BN; creationTxFee: BN }> => {
+  getTxFee = async (): Promise<iGetTxFeeResponse> => {
     // TODO - Add `GetTxFee` response interface
     const response: RequestResponseData = await this.callMethod("info.getTxFee")
     return {
       txFee: new BN(response.data.result.txFee, 10),
-      creationTxFee: new BN(response.data.result.creationTxFee, 10)
+      creationTxFee: new BN(response.data.result.creationTxFee, 10),
+      createAssetTxFee: new BN(response.data.result.createAssetTxFee, 10),
+      createSubnetTxFee: new BN(response.data.result.createSubnetTxFee, 10),
+      createBlockchainTxFee: new BN(
+        response.data.result.createBlockchainTxFee,
+        10
+      )
     }
   }
 
